@@ -7,7 +7,7 @@ import com.praktika.farmakon.dto.response.user.UserResponse;
 import com.praktika.farmakon.entity.User;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface UserMapper {
     UserResponse toDto(User entity);
     User fromDto(LoginRequest dto);

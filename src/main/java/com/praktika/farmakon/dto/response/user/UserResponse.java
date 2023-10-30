@@ -3,9 +3,8 @@ package com.praktika.farmakon.dto.response.user;
 import com.praktika.farmakon.entity.Order;
 import lombok.Data;
 
-import javax.persistence.OneToMany;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Data
 public class UserResponse {
@@ -13,6 +12,6 @@ public class UserResponse {
     private String name;
     private String surname;
     private Date dateOfBirthday;
-    private Set<Order> order;
+    private List<Order> order;
     private Integer bonus;
 }
