@@ -20,6 +20,11 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public Category findById(Long id){
+        return categoryRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Category not found"));
+    }
+
     @Transactional
     public Category createCategory(Category category){
         return categoryRepository.save(category);
@@ -27,7 +32,7 @@ public class CategoryService {
 
     @Transactional
     public Category updateCategory(Category category){
-        if (categoryRepository.existsCategoryById(category.getId()) == false){
+        if (!categoryRepository.existsCategoryById(category.getId())){
             throw new EntityNotFoundException("Category not found");
         }
         return categoryRepository.save(category);

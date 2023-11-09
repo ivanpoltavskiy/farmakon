@@ -29,7 +29,7 @@ public class Order {
     private Long userId;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Order_Preparation",
+    @JoinTable(name = "orders_preparations",
                joinColumns = @JoinColumn(name = "order_id"),
                inverseJoinColumns = @JoinColumn(name = "preparation_id"))
     private List<Preparation> preparations;
