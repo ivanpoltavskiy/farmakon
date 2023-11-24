@@ -19,6 +19,7 @@ public class RegisterRequest {
     @NotNull(message = "Name cannot be null")
     private String name;
     private String surname;
+    private Long roleId;
     @Past
     @NotNull(message = "Birthday cannot be null. Use \"yyyy-mm-dd\" format")
     private Date dateOfBirthday;

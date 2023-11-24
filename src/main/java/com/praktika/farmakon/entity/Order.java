@@ -23,7 +23,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;  //TODO Principal - current user
 
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
