@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -31,8 +30,8 @@ public class Preparation {
     @Column(name = "category_id", insertable = false, updatable = false)
     private Long categoryId;
 
-    @ManyToMany(mappedBy = "preparations")
-    private List<Order> order;
+//    @ManyToMany(mappedBy = "preparations")
+//    private List<Order> order;
 
 }
 

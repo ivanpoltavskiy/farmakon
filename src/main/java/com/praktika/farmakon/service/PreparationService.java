@@ -29,6 +29,10 @@ public class PreparationService {
     public Preparation getPreparationById(Long id, PageRequest pageRequest){
         return preparationRepository.findById(id, pageRequest).orElseThrow(()->new PreparationNotFoundException("Preparation not found"));
     }
+    @Transactional(readOnly = true)
+    public Preparation getPreparationById(Long id){
+        return preparationRepository.findById(id).orElseThrow(()->new PreparationNotFoundException("Preparation not found"));
+    }
 
     @Transactional
     public Preparation createPreparation(Preparation preparation){
