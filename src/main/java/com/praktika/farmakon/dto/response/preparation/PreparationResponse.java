@@ -10,6 +10,7 @@ public class PreparationResponse {
     private String description;
     private String activeSubstance;
     private Double price;
+    private Integer amount;
     private String instruction;
     private Long categoryId;
 }

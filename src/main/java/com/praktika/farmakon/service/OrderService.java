@@ -6,9 +6,6 @@ import com.praktika.farmakon.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -16,27 +13,11 @@ public class OrderService {
     private final PreparationService preparationService;
     private final OrderRepository orderRepository;
 
-    public Order createOrder(User user){
 
-        return Order.builder()
-                .completed(false)
-                .user(user)
-                .preparations(Collections.emptyList())
-                .build();
-    }
-
-    public void addToCard(Long preparationId, User user){
-        Optional<Order> currentOrder = orderRepository.findOrderByCompletedIsFalse(user);
-        if (currentOrder.isEmpty()){
-            Order newOrder = createOrder(user);
-            newOrder.setPreparations(Collections.singletonList(preparationService.getPreparationById(preparationId)));
-            orderRepository.save(newOrder);
-        }
-        else {
-            Order existingOrder = currentOrder.get();
-            existingOrder.getPreparations().add(preparationService.getPreparationById(preparationId));
-            orderRepository.save(existingOrder);
-        }
+    public Order takeNewOrder(Order order, User user){
+        order.setUser(user);
+        order.setUserId(user.getId());
+        return orderRepository.save(order);
     }
 
     public void endingOrder(Long orderId){
@@ -46,4 +27,17 @@ public class OrderService {
         }
         orderRepository.save(currentOrder);
     }
+//    public void takeNewOrder(Order order, User user){
+//        Optional<Order> currentOrder = orderRepository.findOrderByCompletedIsFalse(user);
+//        if (currentOrder.isEmpty()){
+//            Order newOrder = createOrder(user);
+//            newOrder.setPreparations(order.getPreparations());
+//            orderRepository.save(newOrder);
+//        }
+//        else {
+//            Order existingOrder = currentOrder.get();
+//            existingOrder.getPreparations().add(preparationService.getPreparationById(preparationId));
+//            orderRepository.save(existingOrder);
+//        }
+//    }
 }

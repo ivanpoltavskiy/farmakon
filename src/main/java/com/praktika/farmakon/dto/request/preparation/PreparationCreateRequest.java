@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +26,8 @@ public class PreparationCreateRequest {
     @NotNull(message = "Price cannot be null")
     @DecimalMin("0.01")
     private Double price;
+    @Positive
+    private Integer amount;
     @NotBlank(message = "Instruction cannot be null")
     private String instruction;
     @NotNull(message = "Write a category")

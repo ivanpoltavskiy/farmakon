@@ -14,4 +14,6 @@ import java.util.List;
 @Builder
 public class OrderCreateRequest {
     private List<Preparation> preparations;
+    private boolean completed;
+    private Long number;
 }

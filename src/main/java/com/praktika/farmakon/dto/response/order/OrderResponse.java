@@ -1,6 +1,6 @@
 package com.praktika.farmakon.dto.response.order;
 
-import com.praktika.farmakon.entity.Preparation;
+import com.praktika.farmakon.dto.response.preparation.PreparationResponse;
 import lombok.Data;
 
 import java.util.List;
@@ -10,5 +10,6 @@ public class OrderResponse {
     private Long id;
     private Long number;
     private Long userId;
-    private List<Preparation> preparations;
+    private boolean completed;
+    private List<PreparationResponse> preparations;
 }

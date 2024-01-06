@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -32,21 +31,22 @@ public class Order {
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "orders_preparations",
                joinColumns = @JoinColumn(name = "order_id"),
                inverseJoinColumns = @JoinColumn(name = "preparation_id"))
     private List<Preparation> preparations;
 
-    @PrePersist
-    protected void prePersist() {
-        this.number = generateRandomUniqueLong();
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", number=" + number +
+                ", completed=" + completed +
+                ", userId=" + userId +
+                ", preparations=" + preparations +
+                '}';
     }
 
-    private Long generateRandomUniqueLong() {
-        UUID uuid = UUID.randomUUID();
-        long longValue = uuid.getMostSignificantBits();
-        return Math.abs(longValue);
-    }
 }
 

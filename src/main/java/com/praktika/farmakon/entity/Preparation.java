@@ -22,6 +22,7 @@ public class Preparation {
     private String activeSubstance;
     private Double price;
     private String instruction;
+    private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
@@ -30,8 +31,8 @@ public class Preparation {
     @Column(name = "category_id", insertable = false, updatable = false)
     private Long categoryId;
 
-//    @ManyToMany(mappedBy = "preparations")
-//    private List<Order> order;
 
 }
 
+//    @ManyToMany(mappedBy = "preparations")
+//    private List<Order> order;
